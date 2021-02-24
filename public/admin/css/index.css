@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
+
+
+body{
+    background-color: #333;
+
+}
+
+.header-font{
+    color: white;
+    font-family: 'Akaya Telivigala', cursive;
+    font-size: 6rem;
+    font-stretch: expanded;
+}
+.after-header-font{
+    color: white;
+    font-family: "Montserrat-Bold";
+}
+
+.navbar{
+    border-bottom: #008ed6 3px solid;
+    opacity: 0.8;
+}
+.navbar-brand{
+  font-family: "Ubuntu";
+  font-size: 2rem;
+  font-weight: bold;;
+}
+.nav-item{
+    padding: 0 18px;
+  }
+  
+.nav-link{
+    font-size: 1.2rem;
+    font-family: "Montserrat"
+}
+
+#home-section{
+    background-image: url(../img/main.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 700px;
+    background-color: #333;
+    background-blend-mode: multiply;
+}
+
+.home-inner{
+    padding-top: 150px;
+}
+
+
+#popular{
+    background-color: #fff;
+    padding: 5px;
+}
+
+#features{
+    padding: 7% 15%;
+    background-color: #333;
+    color: white;
+    font-family: "Montserrat-Bold";
+    position: relative;
+  }
+
+.feature-box{
+    text-align: center;
+    padding: 5%;
+}
+
+.icon{
+    color: #d1dae2;
+    margin-bottom: 1rem;
+}
+
+.feature-box p{
+    font-size: 1.1rem;
+    color: #8f8f8f;
+}
+
