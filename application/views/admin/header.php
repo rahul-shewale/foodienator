@@ -28,7 +28,8 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="<?php echo base_url().'admin/user/';?>">All User</a>
-                        <a class="dropdown-item" href="<?php base_url().'admin/user/create';?>">Create User</a>
+                        <a class="dropdown-item" href="<?php echo base_url().'admin/user/create_user';?>">Create
+                            User</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -37,8 +38,19 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="<?php echo base_url().'admin/store/';?>">All Store</a>
-                        <a class="dropdown-item" href="<?php echo base_url().'admin/store/create_category';?>">Create Categogry</a>
-                        <a class="dropdown-item" href="<?php echo base_url().'admin/store/create_restuarent';?>">Create Restaurent</a>
+                        <a class="dropdown-item" href="<?php echo base_url().'admin/store/create_restaurant';?>">Create
+                            Restaurant</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Store Categogry
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?php echo base_url().'admin/category/';?>">All Store
+                            Categories</a>
+                        <a class="dropdown-item" href="<?php echo base_url().'admin/category/create_category';?>">Create
+                            Categogry</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -47,7 +59,8 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="<?php echo base_url().'admin/menu';?>">All Menues</a>
-                        <a class="dropdown-item" href="<?php echo base_url().'admin/menu/create_menu';?>">Create Menu</a>
+                        <a class="dropdown-item" href="<?php echo base_url().'admin/menu/create_menu';?>">Create
+                            Menu</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -59,7 +72,8 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url().'admin/home/logout';?>" class="nav-link pull-right"><strong>Logout</strong></a>
+                    <a href="<?php echo base_url().'admin/login/logout';?>"
+                        class="nav-link pull-right"><strong>Logout</strong></a>
                 </li>
             </ul>
         </div>

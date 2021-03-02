@@ -70,7 +70,7 @@
                 <div class="col-md-4 col-sm-12 mb-3">
                     <div class="card shadow-lg" style="max-width:400px mx-auto">
                         <img class="card-img-top" 
-                        src="<?php echo base_url();?>public/admin/css/img/Tacos.jpg" 
+                        src="<?php echo base_url();?>public/admin/img/Tacos.jpg" 
                         alt="Card image">
                         <div class="card-body">
                             <h4 class="card-title">Tacos</h4>
@@ -85,7 +85,7 @@
                 <div class="col-md-4 col-sm-12 mb-3">
                     <div class="card shadow-lg" style="max-width:400px mx-auto">
                         <img class="card-img-top" 
-                        src="<?php echo base_url();?>public/admin/css/img/Meurig.jpg" alt="Card image">
+                        src="<?php echo base_url();?>public/admin/img/Meurig.jpg" alt="Card image">
                         <div class="card-body">
                             <h4 class="card-title">Meurig</h4>
                             <p class="card-text">A whole Pomfret fish grilled with tangy marination & served with
@@ -98,7 +98,7 @@
                 <div class="col-md-4 col-sm-12 mb-3">
                     <div class="card shadow-lg mobile" style="max-width:400px mx-auto">
                         <img class="card-img-top" 
-                        src="<?php echo base_url();?>public/admin/css/img/Chocolate_Hazelnut_Truffle.jpg" alt="Card image">
+                        src="<?php echo base_url();?>public/admin/img/Chocolate_Hazelnut_Truffle.jpg" alt="Card image">
                         <div class="card-body">
                             <h4 class="card-title">Chocolate_Hazelnut_Truffle</h4>
                             <p class="card-text">Lose all senses over this very delicious chocolate hazelnut truffle</p>
