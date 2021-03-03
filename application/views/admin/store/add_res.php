@@ -93,7 +93,7 @@
         </div>
         <div class="form-group">
             <label class="control-label">Select Category</label>
-            <select name="c_id" class="form-control <?php echo (form_error('c_id') != "") ? 'is-invalid' : '';?>">
+            <select name="c_name" class="form-control <?php echo (form_error('c_name') != "") ? 'is-invalid' : '';?>">
                 <option>--Select Category--</option>
                 <?php 
                 if (!empty($cats)) { 
@@ -106,7 +106,7 @@
                 }
                 ?>
             </select>
-            <?php echo form_error('c_id');?>
+            <?php echo form_error('c_name');?>
         </div>
         <h3 class="box-title m-t-40">Store Address</h3>
         <div class="form-group">

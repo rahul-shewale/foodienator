@@ -90,13 +90,14 @@
         </div>
         <div class="form-group">
             <label class="control-label">Select Category</label>
-            <select name="c_name" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+            <select name="c_name" class="form-control <?php echo (form_error('c_name') != "") ? 'is-invalid' : '';?>">
                 <option>--Select Category--</option>
                 <option value="1">Indian</option>
                 <option value="2">Italian</option>
                 <option value="3">Mexican</option>
-                <option value="4">English Dining</option>
+                <option value="4">English dining</option>
             </select>
+            <?php echo form_error('c_name');?>
         </div>
         <h3 class="box-title m-t-40">Store Address</h3>
         <div class="form-group">

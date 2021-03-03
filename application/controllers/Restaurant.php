@@ -1,0 +1,13 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Restaurant extends CI_Controller {
+
+	public function index()
+	{
+		$this->load->model('Store_model');
+		$stores = $this->Store_model->getStores();
+		$data['stores'] = $stores;
+		$this->load->view('front/restaurant',$data);
+	}
+}

@@ -34,6 +34,9 @@
                 <?php foreach($users as $user) { ?>
                     <tr>
                         <td><?php echo $user['u_id']; ?></td>
+                        <!-- <td>
+                            <img src="" alt="">
+                        </td> -->
                         <td><?php echo $user['username']; ?></td>
                         <td><?php echo $user['f_name']; ?></td>
                         <td><?php echo $user['l_name']; ?></td>
