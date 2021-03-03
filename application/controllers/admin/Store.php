@@ -18,7 +18,7 @@ class Store extends CI_Controller {
 
         $config['upload_path']          = './public/uploads/restaurant/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['encrypt_name']         = true;
+        //$config['encrypt_name']         = true;
 
         $this->load->library('upload', $config);
 
@@ -34,7 +34,7 @@ class Store extends CI_Controller {
         $this->form_validation->set_rules('o_hr', 'o_hr','trim|required');
         $this->form_validation->set_rules('c_hr', 'c_hr','trim|required');
         $this->form_validation->set_rules('o_days', 'o_days','trim|required');
-        $this->form_validation->set_rules('c_id', 'category','trim|required');
+        $this->form_validation->set_rules('c_name', 'category','trim|required');
         $this->form_validation->set_rules('address', 'Address','trim|required');
 
         if($this->form_validation->run() == true) {
@@ -61,7 +61,7 @@ class Store extends CI_Controller {
                     $formArray['o_hr'] = $this->input->post('o_hr');
                     $formArray['c_hr'] = $this->input->post('c_hr');
                     $formArray['o_days'] = $this->input->post('o_days');
-                    $formArray['c_id'] = $this->input->post('c_id');
+                    $formArray['c_id'] = $this->input->post('c_name');
                     $formArray['address'] = $this->input->post('address');
         
                     $this->Store_model->create($formArray);
@@ -87,7 +87,7 @@ class Store extends CI_Controller {
                 $formArray['o_hr'] = $this->input->post('o_hr');
                 $formArray['c_hr'] = $this->input->post('c_hr');
                 $formArray['o_days'] = $this->input->post('o_days');
-                $formArray['c_id'] = $this->input->post('c_id');
+                $formArray['c_id'] = $this->input->post('c_name');
                 $formArray['address'] = $this->input->post('address');
     
                 $this->Store_model->create($formArray);
@@ -106,7 +106,6 @@ class Store extends CI_Controller {
     public function edit($id) {
         $this->load->model('Store_model');
         $store = $this->Store_model->getStore($id);
-
         if(empty($store)) {
             $this->session->set_flashdata('error', 'Store not found');
             redirect(base_url().'admin/store/index');
@@ -116,7 +115,7 @@ class Store extends CI_Controller {
 
         $config['upload_path']          = './public/uploads/restaurant/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['encrypt_name']         = true;
+        //$config['encrypt_name']         = true;
 
         $this->load->library('upload', $config);
         $this->load->library('form_validation');
@@ -128,7 +127,7 @@ class Store extends CI_Controller {
         $this->form_validation->set_rules('o_hr', 'o_hr','trim|required');
         $this->form_validation->set_rules('c_hr', 'c_hr','trim|required');
         $this->form_validation->set_rules('o_days', 'o_days','trim|required');
-        $this->form_validation->set_rules('c_id', 'category','trim|required');
+        $this->form_validation->set_rules('c_name', 'category','trim|required');
         $this->form_validation->set_rules('address', 'Address','trim|required');
 
         if($this->form_validation->run() == true) {
