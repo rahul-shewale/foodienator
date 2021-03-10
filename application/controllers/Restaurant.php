@@ -10,4 +10,5 @@ class Restaurant extends CI_Controller {
 		$data['stores'] = $stores;
 		$this->load->view('front/restaurant',$data);
 	}
+
 }

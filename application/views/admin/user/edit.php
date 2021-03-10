@@ -13,7 +13,7 @@
                     <label for="username">Enter Username</label>
                     <input type="text" class="form-control
                     <?php echo (form_error('username') != "") ? 'is-invalid' : '';?>" name="username"
-                    placeholder="Enter username" value="<?php echo set_value('username', $user['username'])?>">
+                    value="<?php echo set_value('username', $user['username'])?>">
                     <?php echo form_error('username'); ?>
                 </div>
                 
@@ -22,7 +22,6 @@
                     <input type="text" class="form-control 
                     <?php echo (form_error('lastname') != "") ? 'is-invalid' : '';?>"
                     name="lastname"
-                    placeholder="Enter Last Name"
                     value="<?php echo set_value('lastname', $user['l_name'])?>">
                     <?php echo form_error('lastname'); ?>
                 </div>
@@ -41,7 +40,6 @@
                     <label for="firstname">Enter First-Name</label>
                     <input type="text" class="form-control
                     <?php echo (form_error('firstname') != "") ? 'is-invalid' : '';?>" name="firstname"
-                    placeholder="Enter First Name"
                     value="<?php echo set_value('firstname', $user['f_name'])?>">
                     <?php echo form_error('firstname'); ?>
                 </div>

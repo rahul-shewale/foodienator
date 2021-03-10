@@ -6,7 +6,25 @@
     <form action="<?php echo base_url().'admin/menu/edit/'.$dish['d_id'];?>" method="POST"
         class="form-container mx-auto  shadow-container" style="width:50%" enctype="multipart/form-data">
         <h3 class="mb-3">Edit Dish "<?php echo $dish['name']; ?>"</h3>
+        <div class="form-group">
+            <label class="control-label">Select Restaurent</label>
+            <select name="rname" class="form-control <?php echo (form_error('rname') != "") ? 'is-invalid' : '';?>">
+                <option>--Select Restaurant--</option>
+                <?php 
+                if (!empty($stores)) { 
+                    foreach($stores as $store) {
+                        ?>
+                <option value="<?php echo $store['r_id'];?>">
+                    <?php echo $store['name'];?>
+                </option>
+                <?php }
+                }
+                ?>
+            </select>
+            <?php echo form_error('rname');?>
+        </div>
         <div class="row">
+            
             <div class="col col-md-6">
                 <div class="form-group">
                     <label for="name">Dish Name</label>

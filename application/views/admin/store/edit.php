@@ -45,8 +45,8 @@
                 <div class="form-group has-danger">
                     <label class="control-label">website URL</label>
                     <input type="text" name="url" class="form-control form-control-danger
-                    <?php echo (form_error('url') != "") ? 'is-invalid' : '';?>"
-                        placeholder=" http://example.com" value="<?php echo set_value('url', $store['url']);?>">
+                    <?php echo (form_error('url') != "") ? 'is-invalid' : '';?>" placeholder=" http://example.com"
+                        value="<?php echo set_value('url', $store['url']);?>">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Close Hours</label>
@@ -92,10 +92,16 @@
             <label class="control-label">Select Category</label>
             <select name="c_name" class="form-control <?php echo (form_error('c_name') != "") ? 'is-invalid' : '';?>">
                 <option>--Select Category--</option>
-                <option value="1">Indian</option>
-                <option value="2">Italian</option>
-                <option value="3">Mexican</option>
-                <option value="4">English dining</option>
+                <?php 
+                if (!empty($cats)) { 
+                    foreach($cats as $cat) {
+                        ?>
+                <option value="<?php echo $cat['c_id'];?>">
+                    <?php echo $cat['c_name'];?>
+                </option>
+                <?php }
+                }
+                ?>
             </select>
             <?php echo form_error('c_name');?>
         </div>

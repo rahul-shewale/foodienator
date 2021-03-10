@@ -18,11 +18,29 @@
     <script src="https://kit.fontawesome.com/104b96157d.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <div class="conatiner">
+<style>
+    .wrapper {
+        background-color: aliceblue;
+    }
+label {
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+    padding-left: 3px
+}
 
-        <h1 class="text-center mt-3">Singup</h1>
-        <p class="text-center mb-4">Create your account</p>
+
+input[placeholder] {
+    font-weight: 500
+}
+
+</style>
+
+<body>
+    <div class="wrapper container">
+
+        <h1 class="text-center my-3">Create your account</h1>
         <form action="<?php echo base_url().'singup/create_user'; ?>" method="POST"
             class="form-container mx-auto shadow-container" style="width:80%">
             <div class="row">
@@ -82,7 +100,7 @@
                     value="<?php echo set_value('address');?>"></textarea>
                 <?php echo form_error('address'); ?>
             </div>
-            <button type="submit" class="btn btn-success btn-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-block">Create account</button>
             <p>Already registered? <a href="<?php echo base_url().'login/index';?>">Sing in</a></p>
         </form>
     </div>

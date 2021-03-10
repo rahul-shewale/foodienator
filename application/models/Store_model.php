@@ -28,5 +28,9 @@ class Store_model extends CI_Model {
         $this->db->delete('restaurants');
     }
 
+    public function countStore() {
+        $query = $this->db->get('restaurants');
+        return $query->num_rows();
+    }
 
 }

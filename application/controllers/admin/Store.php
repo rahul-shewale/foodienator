@@ -27,7 +27,7 @@ class Store extends CI_Controller {
         $this->load->helper('common_helper');
 
         $config['upload_path']          = './public/uploads/restaurant/';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
         //$config['encrypt_name']         = true;
 
         $this->load->library('upload', $config);
@@ -116,6 +116,10 @@ class Store extends CI_Controller {
     public function edit($id) {
         $this->load->model('Store_model');
         $store = $this->Store_model->getStore($id);
+
+        $this->load->model('Category_model');
+        $cat = $this->Category_model->getCategory();
+
         if(empty($store)) {
             $this->session->set_flashdata('error', 'Store not found');
             redirect(base_url().'admin/store/index');
@@ -124,7 +128,7 @@ class Store extends CI_Controller {
         $this->load->helper('common_helper');
 
         $config['upload_path']          = './public/uploads/restaurant/';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
         //$config['encrypt_name']         = true;
 
         $this->load->library('upload', $config);
@@ -189,7 +193,8 @@ class Store extends CI_Controller {
                     $error = $this->upload->display_errors("<p class='invalid-feedback'>","</p>");
                     $data['errorImageUpload'] = $error;
                     $data['store'] = $store;
-                    $this->load->view('admin/store/edit', $data, $error);
+                    $data['cats'] = $cat;
+                    $this->load->view('admin/store/edit', $data);
                 }
 
                 
@@ -215,6 +220,7 @@ class Store extends CI_Controller {
 
         } else {
             $data['store'] = $store;
+            $data['cats'] = $cat;
             $this->load->view('admin/store/edit', $data);
         }
 

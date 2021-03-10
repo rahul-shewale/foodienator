@@ -21,7 +21,7 @@ class Login extends CI_Controller {
                 $password = $this->input->post('password');
                 if( password_verify($password, $user['password']) == true) {
 
-                    $userArray['admin_id'] = $user['admin_id'];
+                    $userArray['user_id'] = $user['u_id'];
                     $userArray['username'] = $user['username'];
                     $this->session->set_userdata('user', $userArray);
                     redirect(base_url().'home/index');

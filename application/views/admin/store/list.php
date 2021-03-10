@@ -14,7 +14,12 @@
             <?php echo $this->session->flashdata('error');?>
         </div>
         <?php endif ?>
-        <h2>All Stores data</h2>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <h2>All Stores data</h2>
+            </div>
+            <input class="form-control mb-3" id="myInput" type="text" placeholder="Search .." style="width:50%;">
+        </div>
         <div class="table-responsive-sm">
             <table class="table table-bordered table-hover table-striped table-responsive">
                 <thead>
@@ -30,7 +35,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable">
                     <?php if(!empty($stores)) { ?>
                     <?php foreach($stores as $store) { ?>
                     <tr>
@@ -47,7 +52,8 @@
                                 class="btn btn-info btn-flat btn-addon btn-xs m-b-10 m-l-5 mb-1"><i
                                     class="fas fa-cog mr-1"></i>Edit</a>
 
-                            <a href="javascript:void(0);" onclick="deleteStore(<?php echo $store['r_id']; ?>)" class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i
+                            <a href="javascript:void(0);" onclick="deleteStore(<?php echo $store['r_id']; ?>)"
+                                class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i
                                     class="fa fa-trash-o mr-1"></i>Delete</a>
                         </td>
                         <!-- <center>
@@ -71,10 +77,19 @@
 
 <?php $this->load->view('admin/footer'); ?>
 <script type="text/javascript">
-    function deleteStore(id) {
-        if(confirm("Are you sure you want to delete store?")) {
-            window.location.href = '<?php echo base_url().'admin/store/delete/';?>'+id;
-        }
+function deleteStore(id) {
+    if (confirm("Are you sure you want to delete store?")) {
+        window.location.href = '<?php echo base_url().'admin/store/delete/';?>' + id;
     }
+}
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 </script>
+
 </html>

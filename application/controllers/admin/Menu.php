@@ -21,10 +21,12 @@ class Menu extends CI_Controller {
     public function create_menu(){
 
         $this->load->helper('common_helper');
+        $this->load->model('Store_model');
+        $store = $this->Store_model->getStores();
 
         $config['upload_path']          = './public/uploads/dishesh/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['encrypt_name']         = true;
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        //$config['encrypt_name']         = true;
 
         $this->load->library('upload', $config);
 
@@ -34,6 +36,8 @@ class Menu extends CI_Controller {
         $this->form_validation->set_rules('name', 'Dish name','trim|required');
         $this->form_validation->set_rules('about', 'About','trim|required');
         $this->form_validation->set_rules('price', 'Price','trim|required');
+        $this->form_validation->set_rules('rname', 'Restaurant name','trim|required');
+
 
         if($this->form_validation->run() == true) {
 
@@ -52,6 +56,7 @@ class Menu extends CI_Controller {
                     $formArray['name'] = $this->input->post('name');
                     $formArray['about'] = $this->input->post('about');
                     $formArray['price'] = $this->input->post('price');
+                    $formArray['r_id'] = $this->input->post('rname');
         
                     $this->Menu_model->create($formArray);
         
@@ -61,8 +66,9 @@ class Menu extends CI_Controller {
                 } else {
                     //we got some errors
                     $error = $this->upload->display_errors("<p class='invalid-feedback'>","</p>");
-                    $data['errorImageUpload'] = $error;
-                    $this->load->view('admin/menu/add_menu', $data);
+                    $data['errorImageUpload'] = $error; 
+                    $store_data['stores']= $store;
+                    $this->load->view('admin/menu/add_menu', $data, $store_data);
                 }
 
                 
@@ -71,15 +77,17 @@ class Menu extends CI_Controller {
                 $formArray['name'] = $this->input->post('name');
                 $formArray['about'] = $this->input->post('about');
                 $formArray['price'] = $this->input->post('price');
+                $formArray['r_id'] = $this->input->post('rname');
     
                 $this->Menu_model->create($formArray);
-    
+                
                 $this->session->set_flashdata('dish_success', 'Dish added successfully');
                 redirect(base_url(). 'admin/menu/index');
             }
 
         } else {
-            $this->load->view('admin/menu/add_menu');
+            $store_data['stores']= $store;
+            $this->load->view('admin/menu/add_menu', $store_data);
         }
         
     }
@@ -87,6 +95,9 @@ class Menu extends CI_Controller {
     public function edit($id) {
         $this->load->model('Menu_model');
         $dish = $this->Menu_model->getSingleDish($id);
+
+        $this->load->model('Store_model');
+        $store = $this->Store_model->getStores();
         
         if(empty($dish)) {
 
@@ -97,7 +108,7 @@ class Menu extends CI_Controller {
         $this->load->helper('common_helper');
 
         $config['upload_path']          = './public/uploads/dishesh/';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
         //$config['encrypt_name']         = true;
 
         $this->load->library('upload', $config);
@@ -107,6 +118,7 @@ class Menu extends CI_Controller {
         $this->form_validation->set_rules('name', 'Dish name','trim|required');
         $this->form_validation->set_rules('about', 'About','trim|required');
         $this->form_validation->set_rules('price', 'Price','trim|required');
+        $this->form_validation->set_rules('rname', 'Restaurant name','trim|required');
 
         if($this->form_validation->run() == true) {
 
@@ -122,6 +134,7 @@ class Menu extends CI_Controller {
                     $formArray['name'] = $this->input->post('name');
                     $formArray['about'] = $this->input->post('about');
                     $formArray['price'] = $this->input->post('price');
+                    $formArray['r_id'] = $this->input->post('rname');
         
                     $this->Menu_model->update($id, $formArray);
 
@@ -143,6 +156,7 @@ class Menu extends CI_Controller {
                     $error = $this->upload->display_errors("<p class='invalid-feedback'>","</p>");
                     $data['errorImageUpload'] = $error;
                     $data['dish'] = $dish;
+                    $data['stores'] = $store;
                     $this->load->view('admin/menu/edit', $data);
                 }
 
@@ -152,6 +166,7 @@ class Menu extends CI_Controller {
                 $formArray['name'] = $this->input->post('name');
                 $formArray['about'] = $this->input->post('about');
                 $formArray['price'] = $this->input->post('price');
+                $formArray['r_id'] = $this->input->post('rname');
     
                 $this->Menu_model->update($id, $formArray);
     
@@ -161,6 +176,7 @@ class Menu extends CI_Controller {
 
         } else {
             $data['dish'] = $dish;
+            $data['stores'] = $store;
             $this->load->view('admin/menu/edit', $data);
 
         }

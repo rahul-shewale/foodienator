@@ -14,7 +14,12 @@
             <?php echo $this->session->flashdata('error');?>
         </div>
         <?php endif ?>
-        <h2>All registered users</h2>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <h2>All Users data</h2>
+            </div>
+            <input class="form-control mb-3" id="myInput" type="text" placeholder="Search .." style="width:50%;">
+        </div>
         <div class="table-responsive-sm">
             <table class="table table-bordered table-striped table-responsive">
                 <thead>
@@ -29,9 +34,9 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                <?php if(!empty($users)) {?>
-                <?php foreach($users as $user) { ?>
+                <tbody id="myTable">
+                    <?php if(!empty($users)) {?>
+                    <?php foreach($users as $user) { ?>
                     <tr>
                         <td><?php echo $user['u_id']; ?></td>
                         <!-- <td>
@@ -44,16 +49,19 @@
                         <td><?php echo $user['phone']; ?></td>
                         <td><?php echo $user['address']; ?></td>
                         <td>
-                        <a href="<?php echo base_url().'admin/user/edit/'.$user['u_id'];?>" class="btn btn-info btn-flat btn-addon btn-xs m-b-10 mb-1"><i class="fas fa-cog mr-1"></i>Edit</a>
-                        <a href="javascript:void(0);" onclick="deleteUser(<?php echo $user['u_id']; ?>)" 
-                        class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i class="fa fa-trash-o mr-1"></i>Delete</a>
+                            <a href="<?php echo base_url().'admin/user/edit/'.$user['u_id'];?>"
+                                class="btn btn-info btn-flat btn-addon btn-xs m-b-10 mb-1"><i
+                                    class="fas fa-cog mr-1"></i>Edit</a>
+                            <a href="javascript:void(0);" onclick="deleteUser(<?php echo $user['u_id']; ?>)"
+                                class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i
+                                    class="fa fa-trash-o mr-1"></i>Delete</a>
                         </td>
                     </tr>
                     <?php } ?>
                     <?php } else {?>
-                        <tr>
-                            <td colspan="4">Records not found</td>
-                        </tr>
+                    <tr>
+                        <td colspan="4">Records not found</td>
+                    </tr>
                     <?php }?>
                 </tbody>
             </table>
@@ -64,10 +72,20 @@
 
 <?php $this->load->view('admin/footer'); ?>
 <script type="text/javascript">
-    function deleteUser(id) {
-        if(confirm("Are you sure you want to delete user?")) {
-            window.location.href = '<?php echo base_url().'admin/user/delete/';?>'+id;
-        }
+function deleteUser(id) {
+    if (confirm("Are you sure you want to delete user?")) {
+        window.location.href = '<?php echo base_url().'admin/user/delete/';?>' + id;
     }
+}
+
+$(document).ready(function() {
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
 </script>
+
 </html>

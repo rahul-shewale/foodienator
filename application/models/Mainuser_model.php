@@ -13,6 +13,17 @@ class Mainuser_model extends CI_Model {
         return $result;
     }
 
+    public function getUser($id) {
+        $this->db->where('u_id', $id);
+        $user = $this->db->get('users')->row_array();
+        return $user;
+    }
+
+    public function update($id, $formArray) {
+        $this->db->where('u_id',$id);
+        $this->db->update('users', $formArray);
+    }
+
     public function getByUsername($username) {
 
         $this->db->where('username', $username);
