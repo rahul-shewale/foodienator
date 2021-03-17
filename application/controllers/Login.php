@@ -3,20 +3,24 @@ defined('BASEPATH') OR exit ('No direct script access allowed');
 
 class Login extends CI_Controller {
 
+
+    public function __construct(){
+        parent::__construct();
+        $this->load->model('User_model');
+    }
+
     public function index() {
         $this->load->view('front/login');
     }
 
     public function authenticate() {
         $this->load->library('form_validation');
-        $this->load->model('Mainuser_model');
-        
         $this->form_validation->set_rules('username','Username', 'trim|required');
         $this->form_validation->set_rules('password','Password', 'trim|required');
 
          if($this->form_validation->run() == true) {
              $username = $this->input->post('username');
-             $user = $this->Mainuser_model->getByUsername($username);
+             $user = $this->User_model->getByUsername($username);
              if(!empty($user)) {
                 $password = $this->input->post('password');
                 if( password_verify($password, $user['password']) == true) {

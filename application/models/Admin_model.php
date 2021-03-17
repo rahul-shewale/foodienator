@@ -8,7 +8,5 @@ class Admin_model extends CI_Model {
         $this->db->where('username', $username);
         $admin = $this->db->get('admin')->row_array();
         return $admin;
-
     }
-
 }

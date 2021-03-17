@@ -33,40 +33,9 @@ class Menu_model extends CI_Model {
         return $query->num_rows();
     }
 
-    //front
-
     public function getDishesh($id) {
         $this->db->where('r_id', $id);
         $dish = $this->db->get('dishesh')->result_array();
         return $dish;
     }
-
-    public function createCustomer($custData) {
-        $this->db->insert('customer', $custData);
-        return $this->db->insert_id();
-    }
-
-    public function insertOrder($orderData) {
-        $this->db->insert('orders', $orderData);
-        return $this->db->insert_id();
-    }
-
-    public function insertOrderItems($orderItemData) {
-        $this->db->insert_batch('order_items', $orderItemData);
-        return $this->db->insert_id();
-    }
-
-    public function getOrder($id) {
-        $this->db->where('o_id', $id);
-        $order = $this->db->get('orders')->row_array();
-        return $order;
-    }
-
-
-    public function getCustomer($id) {
-        $this->db->where('c_id', $id);
-        $cust = $this->db->get('customer')->row_array();
-        return $cust;
-    }
-
 }

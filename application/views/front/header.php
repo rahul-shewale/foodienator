@@ -15,7 +15,6 @@
     <title>Foodienator|Order Food Online</title>
 
 </head>
-
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
         <a class="navbar-brand" href="<?php echo base_url().'home/index';?>">Foodienator</a>
@@ -42,13 +41,12 @@
                     <a class="nav-link" href="<?php echo base_url().'singup/index'?>">singup</a>
                 </li>
                 <?php } else {?>
-
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url().'cart';?>">Shopping Cart</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url().'checkout/';?>">Your orders</a>
+                    <a class="nav-link" href="<?php echo base_url().'orders/';?>">Your orders</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url().'profile';?>">Profile</a>

@@ -39,9 +39,6 @@
                     <?php foreach($users as $user) { ?>
                     <tr>
                         <td><?php echo $user['u_id']; ?></td>
-                        <!-- <td>
-                            <img src="" alt="">
-                        </td> -->
                         <td><?php echo $user['username']; ?></td>
                         <td><?php echo $user['f_name']; ?></td>
                         <td><?php echo $user['l_name']; ?></td>
@@ -50,17 +47,17 @@
                         <td><?php echo $user['address']; ?></td>
                         <td>
                             <a href="<?php echo base_url().'admin/user/edit/'.$user['u_id'];?>"
-                                class="btn btn-info btn-flat btn-addon btn-xs m-b-10 mb-1"><i
+                                class="btn btn-info mb-1"><i
                                     class="fas fa-cog mr-1"></i>Edit</a>
                             <a href="javascript:void(0);" onclick="deleteUser(<?php echo $user['u_id']; ?>)"
-                                class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i
+                                class="btn btn-danger"><i
                                     class="fa fa-trash-o mr-1"></i>Delete</a>
                         </td>
                     </tr>
                     <?php } ?>
                     <?php } else {?>
                     <tr>
-                        <td colspan="4">Records not found</td>
+                        <td colspan="8">Records not found</td>
                     </tr>
                     <?php }?>
                 </tbody>

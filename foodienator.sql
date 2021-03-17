@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2021 at 09:45 AM
+-- Generation Time: Mar 17, 2021 at 08:43 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -45,36 +45,6 @@ INSERT INTO `admin` (`admin_id`, `username`, `password`, `email`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `c_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  `address` text NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
-  `modified` datetime NOT NULL DEFAULT current_timestamp(),
-  `status` enum('1','0') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`c_id`, `name`, `email`, `phone`, `address`, `created`, `modified`, `status`) VALUES
-(1, 'nitin', 'nitin@gmail.com', '6363636363', 'Sandip hostel , Mahiravani, Nashik', '2021-03-10 03:47:56', '2021-03-10 03:47:56', '1'),
-(2, 'nitin', 'nitin@gmail.com', '6363636363', 'Sandip hostel , Mahiravani, Nashik', '2021-03-10 03:50:26', '2021-03-10 03:50:26', '1'),
-(3, 'nitin', 'nitin@gmail.com', '6363636363', 'Sandip hostel , Mahiravani, Nashik', '2021-03-10 03:52:32', '2021-03-10 03:52:32', '1'),
-(4, 'nitin', 'nitin@gmail.com', '6363636363', 'Sandip hostel , Mahiravani, Nashik', '2021-03-10 04:26:15', '2021-03-10 04:26:15', '1'),
-(5, 'nitin', 'nitin@gmail.com', '6363636363', 'Sandip hostel , Mahiravani, Nashik', '2021-03-10 13:11:12', '2021-03-10 13:11:12', '1'),
-(6, 'nitin', 'nitin@gmail.com', '6363636363', 'Sandip hostel , Mahiravani, Nashik', '2021-03-10 13:49:48', '2021-03-10 13:49:48', '1'),
-(7, 'nitin', 'nitin@gmail.com', '6363636363', 'Sandip hostel , Mahiravani, Nashik', '2021-03-10 13:49:58', '2021-03-10 13:49:58', '1');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `dishesh`
 --
 
@@ -84,93 +54,22 @@ CREATE TABLE `dishesh` (
   `name` varchar(255) NOT NULL,
   `about` varchar(255) NOT NULL,
   `price` float NOT NULL,
-  `img` text NOT NULL,
-  `status` enum('1','0') NOT NULL DEFAULT '1'
+  `img` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dishesh`
 --
 
-INSERT INTO `dishesh` (`d_id`, `r_id`, `name`, `about`, `price`, `img`, `status`) VALUES
-(1, 1, 'Royal Paratha', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ea cum placeat in quaerat qui consectetur consequatur!', 120, 'paratha.jpg', '1'),
-(2, 1, 'Royal Biryani', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ea cum placeat in quaerat qui consectetur consequatur!', 150, 'biryani.jpeg', '1'),
-(3, 2, 'Corn Pizza', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ea cum placeat in quaerat qui consectetur consequatur!', 120, 'pizza.jpg', '1'),
-(4, 2, 'Burger', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ea cum placeat in quaerat qui consectetur consequatur!', 90, 'burger.jpg', '1'),
-(5, 3, 'Sammy Sosa', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ea cum placeat in quaerat qui consectetur consequatur!', 88, 'Sammy_Sosa.jpg', '1'),
-(6, 4, 'Manchow Soup', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore modi velit, unde iste accusantium rem voluptatem!', 89, 'Manchow_Soup.jpeg', '1'),
-(7, 4, 'Peri Peri chicken-satay', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore modi velit, unde iste accusantium rem voluptatem!', 120, 'Peri_Peri_chicken-satay.jpg', '1'),
-(8, 3, 'Grilled Tofu', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore modi velit, unde iste accusantium rem voluptatem!', 110, 'Grilled_Tofu.jpeg', '1');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `orders`
---
-
-CREATE TABLE `orders` (
-  `o_id` int(11) NOT NULL,
-  `c_id` int(11) NOT NULL,
-  `grand_total` float NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
-  `modified` datetime NOT NULL DEFAULT current_timestamp(),
-  `status` enum('1','0') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`o_id`, `c_id`, `grand_total`, `created`, `modified`, `status`) VALUES
-(1, 1, 120, '2021-03-10 03:47:56', '2021-03-10 03:47:56', '1'),
-(2, 2, 89, '2021-03-10 03:50:26', '2021-03-10 03:50:26', '1'),
-(3, 3, 120, '2021-03-10 03:52:33', '2021-03-10 03:52:33', '1'),
-(4, 4, 150, '2021-03-10 04:26:15', '2021-03-10 04:26:15', '1'),
-(5, 5, 110, '2021-03-10 13:11:12', '2021-03-10 13:11:12', '1'),
-(6, 6, 308, '2021-03-10 13:49:48', '2021-03-10 13:49:48', '1'),
-(7, 7, 110, '2021-03-10 13:49:58', '2021-03-10 13:49:58', '1');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_items`
---
-
-CREATE TABLE `order_items` (
-  `id` int(11) NOT NULL,
-  `o_id` int(11) NOT NULL,
-  `d_id` int(11) NOT NULL,
-  `quantity` int(5) NOT NULL,
-  `sub_total` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `order_items`
---
-
-INSERT INTO `order_items` (`id`, `o_id`, `d_id`, `quantity`, `sub_total`) VALUES
-(1, 1, 7, 1, 120),
-(2, 2, 6, 1, 89),
-(3, 3, 7, 1, 120),
-(4, 4, 2, 1, 150),
-(5, 5, 8, 1, 110),
-(6, 6, 8, 2, 220),
-(7, 6, 5, 1, 88),
-(8, 7, 8, 1, 110);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `remark`
---
-
-CREATE TABLE `remark` (
-  `id` int(11) NOT NULL,
-  `frm_id` int(11) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `remark` text NOT NULL,
-  `remarkdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `dishesh` (`d_id`, `r_id`, `name`, `about`, `price`, `img`) VALUES
+(1, 1, 'Royal Paratha', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ea cum placeat in quaerat qui consectetur consequatur!', 120, 'paratha.jpg'),
+(2, 1, 'Royal Biryani', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ea cum placeat in quaerat qui consectetur consequatur!', 150, 'biryani.jpeg'),
+(3, 2, 'Corn Pizza', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ea cum placeat in quaerat qui consectetur consequatur!', 120, 'pizza.jpg'),
+(4, 2, 'Burger', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ea cum placeat in quaerat qui consectetur consequatur!', 90, 'burger.jpg'),
+(5, 3, 'Sammy Sosa', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores ea cum placeat in quaerat qui consectetur consequatur!', 88, 'Sammy_Sosa.jpg'),
+(6, 4, 'Manchow Soup', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore modi velit, unde iste accusantium rem voluptatem!', 89, 'Manchow_Soup.jpeg'),
+(7, 4, 'Peri Peri chicken-satay', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore modi velit, unde iste accusantium rem voluptatem!', 120, 'Peri_Peri_chicken-satay.jpg'),
+(8, 3, 'Grilled Tofu', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore modi velit, unde iste accusantium rem voluptatem!', 110, 'Grilled_Tofu.jpeg');
 
 -- --------------------------------------------------------
 
@@ -245,8 +144,40 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`u_id`, `username`, `f_name`, `l_name`, `email`, `phone`, `password`, `address`) VALUES
-(1, 'rahul', 'Rahul', 'Shewale', 'rshewale@gmail.com', '9011153678', '$2y$10$l.ULzN6r7PapKkFllj12QO6ZKAo437IbmUBZ7ke4yTm3WnWtdJQkW', 'Room No 4,Praktan apartment ,Mahatma nagar, Nashik, Maharashtra.'),
-(4, 'nitin', 'nitin', 'shewale', 'nitin@gmail.com', '9874561235', '$2y$10$9K/GoI2auZk/qzG7YHZhX.YkTH.qrVsN.Kim/0Utlu8DiovIsajCO', 'Sandip hostel , Mahiravani, Nashik');
+(1, 'rahul', 'Rahul', 'Shewale', 'rshewale@gmail.com', '9011153678', '$2y$10$8NLoWN03P/tv/Fq.zX12ueWHs.fXJccWiiy1dClQCmtkVqWMW7fRO', 'Room No 5,Praktan apartment ,Mahatma nagar, Nashik, Maharashtra.'),
+(8, 'nitin', 'nitin', 'raje', 'nitin@gmail.com', '9874563214', '$2y$10$6MbBWJT5Aik/Th2SCO5kB.l6PeT618Han2MiI6ic2TMxhDpMYNW2u', 'Mahiravani, Nashik.'),
+(15, 'rohit', 'rohit', 'jha', 'rohit@gmail.com', '9823454178', '$2y$10$MpmRa3e57BHs8s95qT/oQO1ie1MVJ5M.yifNJKZ4IaklTVF55BhRm', 'sailela apt, jatra hotel, adgaon road, nashik');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_orders`
+--
+
+CREATE TABLE `user_orders` (
+  `o_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `d_id` int(11) NOT NULL,
+  `d_name` varchar(255) NOT NULL,
+  `quantity` int(255) NOT NULL,
+  `price` float NOT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `success-date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_orders`
+--
+
+INSERT INTO `user_orders` (`o_id`, `u_id`, `d_id`, `d_name`, `quantity`, `price`, `status`, `date`, `success-date`) VALUES
+(7, 8, 4, 'Burger', 1, 90, 'in process', '2021-03-14 21:05:57', '2021-03-15 09:05:08'),
+(8, 8, 6, 'Manchow Soup', 1, 89, 'closed', '2021-03-14 21:05:57', '2021-03-15 09:05:16'),
+(10, 1, 2, 'Royal Biryani', 1, 150, 'closed', '2021-03-15 08:43:45', '2021-03-15 09:07:18'),
+(11, 1, 8, 'Grilled Tofu', 1, 110, 'closed', '2021-03-15 08:45:00', '2021-03-15 09:07:13'),
+(13, 15, 4, 'Burger', 2, 180, 'closed', '2021-03-17 07:44:42', '2021-03-17 06:46:33'),
+(14, 15, 2, 'Royal Biryani', 1, 150, 'in process', '2021-03-17 07:44:42', '2021-03-17 06:46:39'),
+(15, 15, 3, 'Corn Pizza', 1, 120, NULL, '2021-03-17 07:44:42', '2021-03-17 02:14:42');
 
 --
 -- Indexes for dumped tables
@@ -259,34 +190,10 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`c_id`);
-
---
 -- Indexes for table `dishesh`
 --
 ALTER TABLE `dishesh`
   ADD PRIMARY KEY (`d_id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`o_id`);
-
---
--- Indexes for table `order_items`
---
-ALTER TABLE `order_items`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `remark`
---
-ALTER TABLE `remark`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `restaurants`
@@ -307,6 +214,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`u_id`);
 
 --
+-- Indexes for table `user_orders`
+--
+ALTER TABLE `user_orders`
+  ADD PRIMARY KEY (`o_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -317,34 +230,10 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT for table `dishesh`
 --
 ALTER TABLE `dishesh`
   MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `order_items`
---
-ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `remark`
---
-ALTER TABLE `remark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `restaurants`
@@ -362,7 +251,13 @@ ALTER TABLE `res_category`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `user_orders`
+--
+ALTER TABLE `user_orders`
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

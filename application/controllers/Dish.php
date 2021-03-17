@@ -21,6 +21,7 @@ class Dish extends CI_Controller {
         $dishesh = $this->Menu_model->getSingleDish($id);
         $data = array (
             'id'    => $dishesh['d_id'],
+            'r_id'  => $dishesh['r_id'],
             'qty'   =>1,
             'price' => $dishesh['price'],
             'name' => $dishesh['name'],

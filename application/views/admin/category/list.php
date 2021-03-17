@@ -38,10 +38,10 @@
                             <td><?php echo $cat['c_name']; ?></td>
                             <td>
                                 <a href="<?php echo base_url().'admin/category/edit/'.$cat['c_id']?>"
-                                    class="btn btn-info btn-flat btn-addon btn-xs m-b-10 m-l-5 mb-1"><i
+                                    class="btn btn-info mb-1"><i
                                         class="fas fa-cog mr-1"></i>Edit</a>
                                 <a href="javascript:void(0);" onclick="deleteCat(<?php echo $cat['c_id']; ?>)"
-                                    class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i
+                                    class="btn btn-danger"><i
                                         class="fa fa-trash-o mr-1"></i>Delete</a>
 
                             </td>

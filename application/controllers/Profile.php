@@ -11,20 +11,20 @@ class Profile extends CI_Controller {
                 $this->session->set_flashdata('msg', 'Your session has been expired');
                 redirect(base_url().'login/');
             }
+            
+        $this->load->model('User_model');
     }
 
     public function index() {
-        $this->load->model('Mainuser_model');
         $loggedUser = $this->session->userdata('user');
         $id = $loggedUser['user_id'];
-        $user = $this->Mainuser_model->getUser($id);
+        $user = $this->User_model->getUser($id);
         $data['user'] = $user;
         $this->load->view('front/profile', $data);
     }
 
     public function edit($id) {
-        $this->load->model('Mainuser_model');
-        $user = $this->Mainuser_model->getUser($id);
+        $user = $this->User_model->getUser($id);
 
         if(empty($user)) {
             $this->session->set_flashdata('error', 'User not found');
@@ -50,7 +50,7 @@ class Profile extends CI_Controller {
             $formArray['address'] = $this->input->post('address');
 
 
-            $this->Mainuser_model->update($id,$formArray);
+            $this->User_model->update($id,$formArray);
 
             $this->session->set_flashdata('success', 'User updated successfully');
             redirect(base_url(). 'profile/index');
@@ -63,8 +63,7 @@ class Profile extends CI_Controller {
     }
  
     public function editPassword($id) {
-        $this->load->model('Mainuser_model');
-        $user = $this->Mainuser_model->getUser($id);
+        $user = $this->User_model->getUser($id);
 
         if(empty($user)) {
             $this->session->set_flashdata('error', 'User not found');
@@ -88,7 +87,7 @@ class Profile extends CI_Controller {
                 }else {
                     $formArray['password'] = password_hash($this->input->post('nPassword'), PASSWORD_DEFAULT);
 
-                    $this->Mainuser_model->update($id,$formArray);
+                    $this->User_model->update($id,$formArray);
                     $this->session->set_flashdata('pwd_success', 'Password updated successfully');
                     redirect(base_url(). 'profile/index');
                 }

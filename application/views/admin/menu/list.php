@@ -24,6 +24,7 @@
             <table class="table table-bordered table-hover table-striped table-responsive">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Dish-Name</th>
                         <th>About</th>
                         <th>Price</th>
@@ -34,16 +35,17 @@
                     <?php if(!empty($dishesh)) { ?>
                     <?php foreach($dishesh as $dish) {?>
                     <tr>
+                        <td><?php echo $dish['r_id']; ?></td>
                         <td><?php echo $dish['name']; ?></td>
                         <td><?php echo $dish['about']; ?></td>
                         <td><?php echo $dish['price']; ?></td>
                         <td>
                             <a href="<?php echo base_url().'admin/menu/edit/'.$dish['d_id']; ?>"
-                                class="btn btn-info btn-flat btn-addon btn-xs m-b-10 m-l-5"><i
+                                class="btn btn-info mb-1"><i
                                     class="fas fa-cog mr-1"></i>Edit</a>
 
                             <a href="javascript:void(0);" onclick="deleteMenu(<?php echo $dish['d_id']; ?>)"
-                                class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i
+                                class="btn btn-danger"><i
                                     class="fa fa-trash-o mr-1"></i>Delete</a>
 
                         </td>

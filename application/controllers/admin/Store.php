@@ -158,9 +158,6 @@ class Store extends CI_Controller {
                     //resizing image
                     resizeImage($config['upload_path'].$data['file_name'], $config['upload_path'].'thumb/'.$data['file_name'], 300,270);
 
-                    //resizing image for frontend
-
-
 
                     $formArray['img'] = $data['file_name'];
                     $formArray['name'] = $this->input->post('res_name');

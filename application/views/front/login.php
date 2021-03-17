@@ -12,10 +12,15 @@
 
 <body>
     <?php
+        if (!empty($this->session->flashdata('success'))) {
+          echo "<div class='alert alert-success m-3 mx-auto' style='width:50%'>".$this->session->flashdata('success')."</div>";
+        }
+    ?>
+    <?php
         if (!empty($this->session->flashdata('msg'))) {
           echo "<div class='alert alert-danger m-3 mx-auto' style='width:50%'>".$this->session->flashdata('msg')."</div>";
         }
-      ?>
+    ?>
     <div class="wrapper mt-sm-5">
         <h4 class="pb-4 border-bottom">login to your account</h4>
         <form action="<?php echo base_url().'login/authenticate' ;?>" name="loginform" id="loginform" method="POST">

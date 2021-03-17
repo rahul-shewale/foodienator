@@ -15,24 +15,6 @@
             Menu</a>
     </div>
 </div>
-
-<!-- home section -->
-<!-- <header id="home-section">
-    <div class="dark-overlay">
-        <div class="home-inner container">
-            <div class="header-font">
-                Are you hungry?
-            </div>
-            <div class="after-header-font mt-3">
-                <h2>Don't wait!!!</h2>
-                <h2>Let's start to Order food now!</h2>
-            </div>
-
-            <a href="restaurents.html" class="btn btn-outline-secondary btn-lg p-2 mt-3">Check Out Menu</a>
-
-        </div>
-</header> -->
-
 <section id="popular" class="p-3">
     <div class="container lead text-center" style="font-size: 2.1rem;">
         <p>Populor dishesh of the month</p>
@@ -95,6 +77,92 @@
         </div>
     </div>
 </section>
-<?php $this->load->view('front/footer.php'); ?>
+<section id="contact-us" class="container shadow my-4 p-4">
+    <!--Section heading-->
+    <?php if($this->session->flashdata('msg') != ""):?>
+            <div class="alert alert-success">
+                <?php echo $this->session->flashdata('msg');?>
+            </div>
+    <?php endif ?>
+    <h2 class="text-center my-2 font-weight-bold">Contact Us</h2>
+    <p class="text-center">Always Here For You..</p>
+    <!--Section description-->
+    <p class="text-center mx-auto mb-5"></p>
+    <form id="contact-form" name="contact-form" action="<?php echo base_url().'home/sendMail'; ?>"
+        onsubmit="return validateForm();" method="POST">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-2">
+                    <label class="mb-0" for="name" class="">Your name</label>
+                    <input type="text" id="name" name="name" class="form-control" <?php set_value("name");?>>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <label class="mb-0" for="email" class="">Your email</label>
+                    <input type="text" id="email" name="email" class="form-control" <?php set_value("email");?>>
+                </div>
+            </div>
 
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mb-2">
+                    <label class="mb-0" for="subject" class="">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-control" <?php set_value("subject");?>>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mb-2">
+                    <label class="mb-0" for="message">Your message</label>
+                    <textarea type="text" id="message" name="message" rows="2"
+                        class="form-control md-textarea"><?php set_value("message");?></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="status text-danger font-weight-bold my-2"></div>
+        <button class="btn btn-info" type="submit">Send</button>
+    </form>
+
+</section>
+<?php $this->load->view('front/footer.php'); ?>
+<script>
+function validateForm() {
+    var name = document.getElementById('name').value;
+    if (name == "") {
+        document.querySelector('.status').innerHTML = "Name cannot be empty";
+        document.getElementById('name').focus();
+        return false;
+    }
+    var email = document.getElementById('email').value;
+    if (email == "") {
+        document.querySelector('.status').innerHTML = "Email cannot be empty";
+        document.getElementById('email').focus();
+        return false;
+    } else {
+        var re =
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!re.test(email)) {
+            document.querySelector('.status').innerHTML = "Email format invalid";
+            document.getElementById('email').focus();
+            return false;
+        }
+    }
+    var subject = document.getElementById('subject').value;
+    if (subject == "") {
+        document.querySelector('.status').innerHTML = "Subject cannot be empty";
+        document.getElementById('subject').focus();
+        return false;
+    }
+    var message = document.getElementById('message').value;
+    if (message == "") {
+        document.querySelector('.status').innerHTML = "Message cannot be empty";
+        document.getElementById('message').focus();
+        return false;
+    }
+    return true;
+}
+</script>
 </html>

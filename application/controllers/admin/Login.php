@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit ('No direct script access allowed');
 class Login extends CI_Controller {
 
     public function index() {
-        $this->load->library('form_validation');
         $this->load->view('admin/login');
     }
 
@@ -27,11 +26,11 @@ class Login extends CI_Controller {
                     $this->session->set_userdata('admin', $adminArray);
                     redirect(base_url().'admin/home/index');
                 } else {
-                    $this->session->set_flashdata('msg', '2 Either username or password is incoorect');
+                    $this->session->set_flashdata('msg', 'Either username or password is incoorect');
                     redirect(base_url().'admin/login/index');
                 }
              } else {
-                $this->session->set_flashdata('msg', '1 Either username or password is incoorect');
+                $this->session->set_flashdata('msg', 'Either username or password is incoorect');
                 redirect(base_url().'admin/login/index');
              }
              //success
