@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php $this->load->view('front/header.php'); ?>
-
 <div class="container">
     <h2 class="mt-3">Order Preview</h2>
     <div class="row">
@@ -62,6 +58,10 @@
                     <?php echo (form_error('address') != "") ? 'is-invalid' : '';?>"><?php echo set_value('address', $user['address']);?></textarea>
                     <?php echo form_error('address'); ?>
                 </div>
+                <p class="lead mb-0">Cash on delivery</p>
+                <div class="container p-2 mb-3" style="background: #e5e5e5;">
+                    Pay with Cash upon delivery
+                </div>
                 <div>
                     <a href="<?php echo base_url().'cart'; ?>" class="btn btn-warning"><i class="fas fa-angle-left"></i>
                         Back to cart</a>
@@ -72,8 +72,3 @@
         </div>
     </div>
 </div>
-
-
-<?php $this->load->view('front/footer.php'); ?>
-
-</html>

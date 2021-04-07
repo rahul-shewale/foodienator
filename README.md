@@ -9,18 +9,10 @@ Diffrent Restuarents and there menus are given in the web application.
   Frontend:
   http://localhost/foodienator/
 
-       username: rahul
-       password: rahul
-
   Backend :
 
   dashboard:
   http://localhost/foodienator/admin/home/
-  
-  Users: 
-       Admin
-       username: admin
-       password: admin
   
 
  Please Read:

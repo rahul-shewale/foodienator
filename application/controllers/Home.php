@@ -7,7 +7,9 @@ class Home extends CI_Controller {
 		$this->load->model('Menu_model');
 		$dish = $this->Menu_model->getMenu();
 		$data['dishesh'] = $dish;
+		$this->load->view('front/partials/header');
 		$this->load->view('front/home', $data);
+		$this->load->view('front/partials/footer');
 	}
 
 	public function sendMail() {
@@ -22,30 +24,16 @@ class Home extends CI_Controller {
 			$emailFrom = $this->input->post('email');
 			$subject = $this->input->post('subject');
 			$message = $this->input->post('message');
+			
+			
 
-			$emailTo = "test@gmail.com"; //not real one
-			$config["protocol"] = "smtp";
-			$config["smtp_host"] = "ssl://smtp.gmail.com";
-			$config["smtp_port"] = "465";
-			$config["smtp_timeout"] = "60";
-			$config["smtp_user"] = "test@gmail.com"; //not real one
-			$config["smtp_pass"] = "test"; //not real one
-
-			$config["charset"] = "utf-8";
-			$config["newline"] = "\r\n";
-			$config["mailtype"] = "html";
-			$config["validation"] = TRUE;
-
-			$this->load->library('email');
-			$this->email->initialize($config);
-			$this->email->set_mailtype("html");
-			$this->email->from($emailFrom);
-			$this->email->to($emailTo);
-			$this->email->subject($subject);
-			$this->email->message($message);
-			$test= $this->email->send();
-
-			$this->session->set_flashdata("msg","mail has been sent successfully".$test);
+			$toEmail = "rahulrajendrashewale@gmail.com";
+			$mailHeaders = "From: ". $name . "<". $emailFrom .">\r\n";
+			if(mail($toEmail, $subject, $message, $mailHeaders)) {
+				$this->session->set_flashdata("msg","mail has been sent successfully");
+			} else {
+				$this->session->set_flashdata("msg","mail is not sent, try again.");
+			}
 			redirect(base_url().'home/index');
 		} else {
 			redirect(base_url().'home/index');

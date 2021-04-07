@@ -28,7 +28,7 @@ class Checkout extends CI_Controller {
         if($this->cart->total_items() <= 0) {
             redirect(base_url().'restaurant');
         }
-        $submit = $this->input->post('placeholder');
+            $submit = $this->input->post('placeholder');
             $this->form_validation->set_error_delimiters('<p class="invalid-feedback">','</p>');
             $this->form_validation->set_rules('address', 'Address','trim|required');
 
@@ -48,7 +48,9 @@ class Checkout extends CI_Controller {
 
         $data['user'] = $user;
         $data['cartItems'] = $this->cart->contents();
+        $this->load->view('front/partials/header');
         $this->load->view('front/checkout',$data);
+        $this->load->view('front/partials/footer');
     }
 
     public function placeOrder($u_Id) {  
@@ -57,6 +59,7 @@ class Checkout extends CI_Controller {
         foreach($cartItems as $item) {
             $orderData[$i]['u_id'] = $u_Id;
             $orderData[$i]['d_id'] = $item['id'];
+            $orderData[$i]['r_id'] = $item['r_id'];
             $orderData[$i]['d_name'] = $item['name'];
             $orderData[$i]['quantity'] = $item['qty'];
             $orderData[$i]['price'] = $item['subtotal'];

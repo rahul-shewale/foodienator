@@ -16,7 +16,9 @@ class User extends CI_Controller {
         $this->load->model('User_model');
         $users = $this->User_model->getUsers();
         $data['users'] = $users;
+        $this->load->view('admin/partials/header');
         $this->load->view('admin/user/list', $data);
+        $this->load->view('admin/partials/footer');
     }
     public function create_user() {
 
@@ -49,7 +51,9 @@ class User extends CI_Controller {
 
 
         } else {
+            $this->load->view('admin/partials/header');
             $this->load->view('admin/user/add_user');
+            $this->load->view('admin/partials/footer');
         }
         
     }
@@ -91,8 +95,10 @@ class User extends CI_Controller {
 
 
         } else {
-            $data['user'] = $user; 
+            $data['user'] = $user;
+            $this->load->view('admin/partials/header');
             $this->load->view('admin/user/edit', $data);
+            $this->load->view('admin/partials/footer');
         }
     }
 

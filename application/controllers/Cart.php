@@ -20,7 +20,9 @@ class Cart extends CI_Controller {
     public function index() {
         
         $data['cartItems'] = $this->cart->contents();
+        $this->load->view('front/partials/header');
         $this->load->view('front/cart', $data);
+        $this->load->view('front/partials/footer');
     }
 
     function updateCartItemQty() {

@@ -1,27 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<?php $this->load->view('admin/header'); ?>
-<div class="container mt-3">
-    <div class="container shadow-container">
-        <?php if($this->session->flashdata('res_success') != ""):?>
-        <div class="alert alert-success">
-            <?php echo $this->session->flashdata('res_success');?>
+<div class="container my-3">
+    <?php if($this->session->flashdata('res_success') != ""):?>
+    <div class="alert alert-success">
+        <?php echo $this->session->flashdata('res_success');?>
+    </div>
+    <?php endif ?>
+    <?php if($this->session->flashdata('error') != ""):?>
+    <div class="alert alert-danger">
+        <?php echo $this->session->flashdata('error');?>
+    </div>
+    <?php endif ?>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>All store data</h4>
         </div>
-        <?php endif ?>
-        <?php if($this->session->flashdata('error') != ""):?>
-        <div class="alert alert-danger">
-            <?php echo $this->session->flashdata('error');?>
-        </div>
-        <?php endif ?>
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-                <h2>All Stores data</h2>
-            </div>
+        <div class="col-md-6 text-right">
             <input class="form-control mb-3" id="myInput" type="text" placeholder="Search .." style="width:50%;">
         </div>
-        <div class="table-responsive-sm">
-            <table class="table table-bordered table-hover table-striped table-responsive">
+        <div class="col-md-12">
+            <table class="table table-striped table-responsive table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -51,18 +47,16 @@
                         <td><?php echo $store['address']; ?></td>
                         <td>
                             <a href="<?php echo base_url().'admin/store/edit/'.$store['r_id']?>"
-                                class="btn btn-info mb-1"><i
-                                    class="fas fa-cog mr-1"></i>Edit</a>
+                                class="btn btn-info mb-1"><i class="fas fa-cog mr-1"></i>Edit</a>
 
                             <a href="javascript:void(0);" onclick="deleteStore(<?php echo $store['r_id']; ?>)"
-                                class="btn btn-danger"><i
-                                    class="fa fa-trash-o mr-1"></i>Delete</a>
+                                class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
                         </td>
                         <!-- <center>
-                            <td><img class="img-responsive radius" 
-                            src=" //echo base_url();?>public/admin/img/res.jpg"
-                            style="min-width:150px; min-height: 100px;"></td>
-                        </center> -->
+                                <td><img class="img-responsive radius" 
+                                src=" //echo base_url();?>public/admin/img/res.jpg"
+                                style="min-width:150px; min-height: 100px;"></td>
+                            </center> -->
                     </tr>
                     <?php } ?>
                     <?php } else {?>
@@ -76,8 +70,6 @@
     </div>
 </div>
 
-
-<?php $this->load->view('admin/footer'); ?>
 <script type="text/javascript">
 function deleteStore(id) {
     if (confirm("Are you sure you want to delete store?")) {
@@ -93,5 +85,3 @@ $(document).ready(function() {
     });
 });
 </script>
-
-</html>

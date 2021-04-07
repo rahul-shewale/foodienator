@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<?php $this->load->view('admin/header'); ?>
-
 <div class="container table-responsive m-t-20">
     <h2 class="py-3">View user orders</h2>
     <table id="myTable" class="table table-bordered table-striped dataTable">
@@ -53,7 +48,3 @@
         </tbody>
     </table>
 </div>
-
-<?php $this->load->view('admin/footer'); ?>
-
-</html>

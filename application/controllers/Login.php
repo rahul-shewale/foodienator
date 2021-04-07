@@ -30,11 +30,11 @@ class Login extends CI_Controller {
                     $this->session->set_userdata('user', $userArray);
                     redirect(base_url().'home/index');
                 } else {
-                    $this->session->set_flashdata('msg', 'Either username or password is incoorect');
+                    $this->session->set_flashdata('msg', 'Either username or password is incorrect');
                     redirect(base_url().'login/index');
                 }
              } else {
-                $this->session->set_flashdata('msg', 'Either username or password is incoorect');
+                $this->session->set_flashdata('msg', 'Either username or password is incorrect');
                 redirect(base_url().'login/index');
              }
              //success

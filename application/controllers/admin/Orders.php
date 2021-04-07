@@ -18,13 +18,17 @@ class Orders extends CI_Controller {
     public function index() {
         $order = $this->Order_model->getAllOrders();
         $data['orders'] = $order;
+        $this->load->view('admin/partials/header');
         $this->load->view('admin/orders/list', $data);
+        $this->load->view('admin/partials/footer');
     }
 
     public function processOrder($id) {
         $order = $this->Order_model->getOrderByUser($id);
         $data['order'] = $order;
+        $this->load->view('admin/partials/header');
         $this->load->view('admin/orders/processOrder', $data);
+        $this->load->view('admin/partials/footer');
     }
 
     public function updateOrder($id) {

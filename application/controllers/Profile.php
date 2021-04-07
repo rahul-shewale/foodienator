@@ -20,7 +20,9 @@ class Profile extends CI_Controller {
         $id = $loggedUser['user_id'];
         $user = $this->User_model->getUser($id);
         $data['user'] = $user;
+        $this->load->view('front/partials/header');
         $this->load->view('front/profile', $data);
+        $this->load->view('front/partials/footer');
     }
 
     public function edit($id) {
@@ -58,7 +60,9 @@ class Profile extends CI_Controller {
 
         } else {
             $data['user'] = $user; 
+            $this->load->view('front/partials/header');
             $this->load->view('front/profile', $data);
+            $this->load->view('front/partials/footer');
         }
     }
  
@@ -97,7 +101,9 @@ class Profile extends CI_Controller {
             }
         }else {
             $data['user'] = $user; 
+            $this->load->view('front/partials/header');
             $this->load->view('front/profile', $data);
+            $this->load->view('front/partials/footer');
         }
     }
 }

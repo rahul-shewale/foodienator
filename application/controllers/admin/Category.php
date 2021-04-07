@@ -16,7 +16,9 @@ class Category extends CI_Controller {
         $this->load->model('Category_model');
         $cats = $this->Category_model->getCategory();
         $cats_data['cats'] = $cats;
+        $this->load->view('admin/partials/header');
         $this->load->view('admin/category/list', $cats_data);
+        $this->load->view('admin/partials/footer');
     }
 
     public function create_category(){
@@ -32,7 +34,9 @@ class Category extends CI_Controller {
             $this->session->set_flashdata('cat_success', 'category added successfully');
             redirect(base_url().'admin/category/index');
         } else {
+            $this->load->view('admin/partials/header');
             $this->load->view('admin/category/add_cat');
+            $this->load->view('admin/partials/footer');
         }
     }
 
@@ -59,7 +63,9 @@ class Category extends CI_Controller {
 
         } else {
             $data['cat'] = $cat;
+            $this->load->view('admin/partials/header');
             $this->load->view('admin/category/edit', $data);
+            $this->load->view('admin/partials/footer');
         }
 
     }

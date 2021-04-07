@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<?php $this->load->view('admin/header'); ?>
-
-<div class="container mt-3">
+<div class="container">
     <div class="container shadow-container">
         <?php if($this->session->flashdata('success') != ""):?>
         <div class="alert alert-success">
@@ -49,25 +44,22 @@
 
                         <?php $status=$order['status'];
 						if($status=="" or $status=="NULL") { ?>
-                        <td> <button type="button" class="btn btn-info" style="font-weight:bold;"><span
-                                    class="fa fa-bars" aria-hidden="true">Dispatch</button></td>
+                        <td> <button type="button" class="btn btn-info" style="font-weight:bold;"><i class="fas fa-bars"></i> Dispatch</button></td>
                         <?php } if($status=="in process") { ?>
                         <td> <button type="button" class="btn btn-warning"><span class="fa fa-cog fa-spin"
-                                    aria-hidden="true"></span>On a Way!</button></td>
+                                    aria-hidden="true"></span> On a Way!</button></td>
                         <?php } if($status=="closed") { ?>
-                        <td> <button type="button" class="btn btn-success"><span class="fa fa-check-circle"
-                                    aria-hidden="true">Delivered</button>
+                        <td> <button type="button" class="btn btn-success"><span class="fa fa-check-circle"aria-hidden="true"></span> Delivered</button>
                         </td> <?php } ?> <?php if($status=="rejected") { ?>
-                        <td> <button type="button" class="btn btn-danger"> <i class="fa fa-close"></i>cancelled</button>
+                        <td> <button type="button" class="btn btn-danger"><i class="far fa-times-circle"></i> cancelled</button>
                         </td>
                         <?php } ?>
                         <td><?php echo $order['date']; ?></td>
                         <td>
                             <a href="<?php echo base_url().'admin/orders/processOrder/'.$order['o_id'];?>"
-                                class="btn btn-danger mb-1"><i class="fa fa-trash-o" style="font-size:16px"></i>
-                                Process</a>
+                                class="btn btn-info mb-1">                               <i class="fas fa-cog"></i> Process</a>
                             <a href="<?php echo base_url().'admin/orders/deleteOrder/'.$order['o_id']?>"
-                                class="btn btn-info"><i class="fas fa-cog"></i> Delete</a>
+                                class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
                         </td>
                     </tr>
                     <?php } ?>
@@ -81,8 +73,6 @@
         </div>
     </div>
 </div>
-
-<?php $this->load->view('admin/footer'); ?>
 <script>
 function deleteOrder(id) {
     if (confirm("Are you sure you want to delete orders?")) {
@@ -99,5 +89,3 @@ $(document).ready(function() {
     });
 });
 </script>
-
-</html>

@@ -16,7 +16,9 @@ class Store extends CI_Controller {
         $this->load->model('Store_model');
         $stores = $this->Store_model->getStores();
         $store_data['stores'] = $stores;
+        $this->load->view('admin/partials/header');
         $this->load->view('admin/store/list', $store_data);
+        $this->load->view('admin/partials/footer');
     }
 
     public function create_restaurant() {
@@ -83,8 +85,10 @@ class Store extends CI_Controller {
                     //we got some errors
                     $error = $this->upload->display_errors("<p class='invalid-feedback'>","</p>");
                     $data['errorImageUpload'] = $error;
-                    $cats['cats'] = $cat;
-                    $this->load->view('admin/store/add_res', $data, $cats);
+                    $data['cats'] = $cat;
+                    $this->load->view('admin/partials/header');
+                    $this->load->view('admin/store/add_res', $data);
+                    $this->load->view('admin/partials/footer');
                 }
 
                 
@@ -107,8 +111,10 @@ class Store extends CI_Controller {
             }
 
         } else {
-            $cats['cats'] = $cat;
-            $this->load->view('admin/store/add_res', $cats);
+            $data['cats'] = $cat;
+            $this->load->view('admin/partials/header');
+            $this->load->view('admin/store/add_res', $data);
+            $this->load->view('admin/partials/footer');
         }
         
     }
@@ -191,7 +197,9 @@ class Store extends CI_Controller {
                     $data['errorImageUpload'] = $error;
                     $data['store'] = $store;
                     $data['cats'] = $cat;
+                    $this->load->view('admin/partials/header');
                     $this->load->view('admin/store/edit', $data);
+                    $this->load->view('admin/partials/footer');
                 }
 
                 
@@ -218,7 +226,9 @@ class Store extends CI_Controller {
         } else {
             $data['store'] = $store;
             $data['cats'] = $cat;
+            $this->load->view('admin/partials/header');
             $this->load->view('admin/store/edit', $data);
+            $this->load->view('admin/partials/footer');
         }
 
     }

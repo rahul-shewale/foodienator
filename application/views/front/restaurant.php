@@ -1,45 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<?php $this->load->view('front/header.php'); ?>
-<div class="hero-image">
-    <div class="container">
-        <div class="header-font">
-            Are you hungry?
+<div class="container-fluid padding">
+    <div class="row welcome text-center welcome">
+        <div class="col-12">
+            <h1 class="display-4">Restaurants</h1>
         </div>
-        <div class="after-header-font mt-3">
-            <h2>Don't wait!!!</h2>
-            <h2>Let's start to Order food now!</h2>
-        </div>
-
-        <a href="<?php echo base_url().'restaurant/index'?>" class="btn btn-outline-secondary btn-lg p-2 mt-3">Check Out
-            Menu</a>
+        <hr>
     </div>
 </div>
-<div class="container py-3">
-    <h3>Seacrh here</h3>
-    <input class="form-control mb-3" id="myInput" type="text" placeholder="Search ..">
-    <div class="card-deck">
+<div class="container text-center padding dish-card">
+    <div class="row container">
         <?php if(!empty($stores)) { ?>
         <?php foreach($stores as $store) { ?>
-        <div id="myCard" class="card">
-            <?php $image = $store['img'];?>
-            <img class="card-img-top rounded" src="<?php echo base_url().'public/uploads/restaurant/thumb/'.$image; ?>">
-            <div class="card-body" id="myDiv">
-                <h5 class="card-title"><?php echo $store['name']; ?></h5>
-                <p class="card-text"><?php echo $store['address']; ?></p>
-                </p>
-            </div>
-            <div class="text-center mb-3">
-                <a href="<?php echo base_url().'dish/list/'.$store['r_id']; ?>" class="btn btn-outline-success">Check
-                    out Menu</a>
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
+            <div class="card mb-4 shadow-sm">
+                <?php $image = $store['img'];?>
+                <img class="card-img-top" src="<?php echo base_url().'public/uploads/restaurant/thumb/'.$image; ?>">
+                <div class="card-body">
+                    <h4 class="card-title"><?php echo $store['name']; ?></h4>
+                    <p class="card-text mb-0"><?php echo $store['c_name']." Restaurant"; ?></p>
+                    <p class="card-text mb-0"><?php echo $store['address']; ?></p>
+                    <hr>
+                    <p class="card-text mb-0"></p>
+                    <p class="card-text mb-0">OPENING HOURS</p>
+                    <p class="card-text mb-0"><?php echo $store['o_days']; ?></p>
+                    <p class="card-text"><?php echo $store['o_hr']; ?> - <?php echo $store['c_hr']; ?></p>
+                    <hr>
+                    <a href="<?php echo base_url().'dish/list/'.$store['r_id']; ?>" class="btn btn-success">View
+                        Menu</a>
+                </div>
             </div>
         </div>
         <?php } ?>
-        <?php } else {?>
-        <h1>no restaurant's in database..add sql for database</h1>
+        <?php } else { ?>
+        <h1>No records found</h1>
         <?php } ?>
     </div>
 </div>
-<?php $this->load->view('front/footer.php'); ?>
-</html>

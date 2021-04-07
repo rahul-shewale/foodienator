@@ -24,13 +24,13 @@ class Login extends CI_Controller {
                     $adminArray['admin_id'] = $admin['admin_id'];
                     $adminArray['username'] = $admin['username'];
                     $this->session->set_userdata('admin', $adminArray);
-                    redirect(base_url().'admin/home/index');
+                    redirect(base_url().'admin/home');
                 } else {
-                    $this->session->set_flashdata('msg', 'Either username or password is incoorect');
+                    $this->session->set_flashdata('msg', 'Either username or password is incorrect');
                     redirect(base_url().'admin/login/index');
                 }
              } else {
-                $this->session->set_flashdata('msg', 'Either username or password is incoorect');
+                $this->session->set_flashdata('msg', 'Either username or password is incorrect');
                 redirect(base_url().'admin/login/index');
              }
              //success

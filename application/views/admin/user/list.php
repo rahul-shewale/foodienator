@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<?php $this->load->view('admin/header'); ?>
-<div class="container mt-3">
+<div class="container">
     <div class="container shadow-container">
         <?php if($this->session->flashdata('success') != ""):?>
         <div class="alert alert-success">
@@ -50,8 +46,7 @@
                                 class="btn btn-info mb-1"><i
                                     class="fas fa-cog mr-1"></i>Edit</a>
                             <a href="javascript:void(0);" onclick="deleteUser(<?php echo $user['u_id']; ?>)"
-                                class="btn btn-danger"><i
-                                    class="fa fa-trash-o mr-1"></i>Delete</a>
+                                class="btn btn-danger"><i class="fas fa-trash-alt"></i>   Delete</a>
                         </td>
                     </tr>
                     <?php } ?>
@@ -65,9 +60,6 @@
         </div>
     </div>
 </div>
-
-
-<?php $this->load->view('admin/footer'); ?>
 <script type="text/javascript">
 function deleteUser(id) {
     if (confirm("Are you sure you want to delete user?")) {
@@ -84,5 +76,3 @@ $(document).ready(function() {
     });
 });
 </script>
-
-</html>

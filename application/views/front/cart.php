@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php $this->load->view('front/header.php'); ?>
-
-
-
 <script>
 function updateCartItem(obj, rowid) {
     $.get("<?php echo base_url().'cart/updateCartItemQty/'; ?>", {
@@ -53,8 +47,7 @@ function updateCartItem(obj, rowid) {
                     <td>
                         <a href="<?php echo base_url().'cart/removeItem/'.$item['rowid'] ; ?>"
                             onclick="return confirm('Are you sure?')"
-                            class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i class="fa fa-trash-o"
-                                style="font-size:16px"></i></a>
+                            class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 <?php } ?>
@@ -77,8 +70,3 @@ function updateCartItem(obj, rowid) {
         </table>
     </div>
 </div>
-
-
-<?php $this->load->view('front/footer.php'); ?>
-
-</html>

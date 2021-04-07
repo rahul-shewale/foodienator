@@ -1,45 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php $this->load->view('front/header.php'); ?>
-<div class="container">
-    <div class="my-3 d-flex justify-content-between align-items-center">
-        <h2>Menu of restaurant</h2>
-        <a href="<?php echo base_url().'cart'; ?>" class="cart-link" title="View cart"><i
-                class="fas fa-shopping-cart"></i>
-            <span>(<?php echo $this->cart->total_items(); ?>)</span></a>
+<div class="container p-4">
+    <div class="row welcome text-center welcome">
+        <div class="col-12">
+            <h1 class="display-4">Menu of <?php echo $res['name']; ?></h1>
+        </div>
     </div>
-    <!-- <div class="card m-3 text-center">
-        <div class="card-header">
-            <h3>Your Cart</h3>
+    <div class="container res-card">
+        <div class="card">
+            <?php $img = $res['img'];?>
+            <img src="<?php echo base_url().'public/uploads/restaurant/thumb/'.$img; ?>" class="card-img-top" />
+            <div class="card-body">
+                <h4 class="card-title font-weight-bold text-primary"><?php echo $res['name']; ?></h4>
+                <p class="card-text lead"><?php echo $res['address']; ?></p>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+            </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title text-center">Total Dishs: <?php// echo $this->cart->total_items(); ?></h5>
-            <h5 class="card-text">$0</h5>
-                <a href="#" class="btn btn-primary">Checkout</a>
-        </div>
-    </div> -->
+    </div>
+</div>
+<div class="container p-4 dish-card">
     <div class="row">
         <?php if(!empty($dishesh)) { ?>
         <?php foreach($dishesh as $dish) { ?>
-        <div class="col-md-4">
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
             <div class="card mb-4 shadow-sm">
                 <?php $image = $dish['img'];?>
-                <img class="bd-placeholder-img card-img-top" width="100%" height="225"
-                    src="<?php echo base_url().'public/uploads/dishesh/thumb/'.$image; ?>">
-                <!-- class="bd-placeholder-img card-img-top" width="100%" height="225" -->
+                <img class="card-img-top" src="<?php echo base_url().'public/uploads/dishesh/thumb/'.$image; ?>">
                 <div class="card-body">
-                    <h5 class="card-title"><?php echo $dish['name']; ?></h5>
-                    <hr>
-                    <p class="card-text"><?php echo $dish['about']; ?></p>
-                    <hr>
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a href="<?php echo base_url().'Dish/addToCart/'.$dish['d_id']; ?>"
-                                class="btn btn-outline-success">Add to
-                                Cart</a>
-                        </div>
-                        <h4 class="text-muted"><b><?php echo $dish['price']; ?></b>/-🍕</h4>
+                        <h4 class="card-title"><?php echo $dish['name']; ?></h4>
+                        <h4 class="text-muted"><b>$<?php echo $dish['price']; ?></b></h4>
                     </div>
+                    <p class="card-text"><?php echo $dish['about']; ?></p>
+                    <a href="<?php echo base_url().'Dish/addToCart/'.$dish['d_id']; ?>" class="btn btn-success"><i
+                            class="fas fa-shopping-cart"></i> Add to
+                        Cart</a>
                 </div>
             </div>
         </div>
@@ -50,9 +46,5 @@
         </div>
         <?php } ?>
     </div>
+    <hr class="my-4">
 </div>
-
-
-<?php $this->load->view('front/footer.php'); ?>
-
-</html>

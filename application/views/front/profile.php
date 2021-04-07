@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<?php $this->load->view('front/header.php'); ?>
-<link rel="stylesheet" href="<?php echo base_url();?>public/front/css/profile.css">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/profile.css');?>">
 <div class="row">
     <div class="col-md-6">
         <div class="wrapper mt-sm-5">
@@ -18,20 +14,19 @@
                     <div>
                         <label for="username">Username</label>
                         <input type="text" name="username"
-                            class="bg-light form-control<?php echo (form_error('username') != "") ? 'is-invalid' : '';?>"
+                            class="bg-light form-control <?php echo (form_error('username') != "") ? 'is-invalid' : '';?>"
                             value="<?php echo set_value('username', $user['username']);?>">
                         <?php echo form_error('username'); ?>
                     </div>
-                    <div class="row py-2">
-
+                    <div class="row">
                         <div class="col-md-6">
-                            <label for="f">First Name</label>
+                            <label for="firstname">First Name</label>
                             <input type="text"
                                 class="bg-light form-control <?php echo (form_error('firstname') != "") ? 'is-invalid' : '';?>"
                                 name="firstname" value="<?php echo set_value('firstname', $user['f_name'])?>">
                             <?php echo form_error('firstname'); ?>
                         </div>
-                        <div class="col-md-6 pt-md-0 pt-3">
+                        <div class="col-md-6">
                             <label for="lastname">Last Name</label>
                             <input type="text"
                                 class="bg-light form-control <?php echo (form_error('lastname') != "") ? 'is-invalid' : '';?>"
@@ -39,7 +34,7 @@
                             <?php echo form_error('lastname'); ?>
                         </div>
                     </div>
-                    <div class="row py-2">
+                    <div class="row">
                         <div class="col-md-6">
                             <label for="email">Email Address</label>
                             <input type="text"
@@ -47,7 +42,7 @@
                                 name="email" value="<?php echo set_value('email', $user['email'])?>">
                             <?php echo form_error('email'); ?>
                         </div>
-                        <div class="col-md-6 pt-md-0 pt-3">
+                        <div class="col-md-6">
                             <label for="phone">Phone Number</label>
                             <input type="tel"
                                 class="bg-light form-control <?php echo (form_error('phone') != "") ? 'is-invalid' : '';?>"
@@ -113,18 +108,3 @@
         </div>
     </div>
 </div>
-</div>
-<?php $this->load->view('front/footer.php'); ?>
-<!-- <script type="text/javascript">
-function profile() {
-    window.location.href = '<?php //echo base_url().'profile/edit/'.$loggedUser['user_id'];?>';
-}
-// window.onload = profile;
-function deactivate() {
-    if (confirm("Are you sure you want to deactivate your account?")) {
-        window.location.href = '<?php// echo base_url().'login';?>';
-    }
-}
-</script> -->
-
-</html>

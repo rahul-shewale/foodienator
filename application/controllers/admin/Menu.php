@@ -9,13 +9,16 @@ class Menu extends CI_Controller {
             $this->session->set_flashdata('msg', 'Your session has been expired');
             redirect(base_url().'admin/login/index');
         }
+        $this->load->helper('url');
     }
 
     public function index() {
         $this->load->model('Menu_model');
         $dishesh = $this->Menu_model->getMenu();
         $data['dishesh'] = $dishesh;
+        $this->load->view('admin/partials/header');
         $this->load->view('admin/menu/list', $data);
+        $this->load->view('admin/partials/footer');
     }
 
     public function create_menu(){
@@ -67,8 +70,10 @@ class Menu extends CI_Controller {
                     //we got some errors
                     $error = $this->upload->display_errors("<p class='invalid-feedback'>","</p>");
                     $data['errorImageUpload'] = $error; 
-                    $store_data['stores']= $store;
-                    $this->load->view('admin/menu/add_menu', $data, $store_data);
+                    $data['stores']= $store;
+                    $this->load->view('admin/partials/header');
+                    $this->load->view('admin/menu/add_menu', $data);
+                    $this->load->view('admin/partials/footer');
                 }
 
                 
@@ -87,7 +92,9 @@ class Menu extends CI_Controller {
 
         } else {
             $store_data['stores']= $store;
+            $this->load->view('admin/partials/header');
             $this->load->view('admin/menu/add_menu', $store_data);
+            $this->load->view('admin/partials/footer');
         }
         
     }
@@ -157,7 +164,9 @@ class Menu extends CI_Controller {
                     $data['errorImageUpload'] = $error;
                     $data['dish'] = $dish;
                     $data['stores'] = $store;
+                    $this->load->view('admin/partials/header');
                     $this->load->view('admin/menu/edit', $data);
+                    $this->load->view('admin/partials/footer');
                 }
 
                 
@@ -177,7 +186,9 @@ class Menu extends CI_Controller {
         } else {
             $data['dish'] = $dish;
             $data['stores'] = $store;
+            $this->load->view('admin/partials/header');
             $this->load->view('admin/menu/edit', $data);
+            $this->load->view('admin/partials/footer');
 
         }
 

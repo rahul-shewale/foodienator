@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<?php $this->load->view('admin/header'); ?>
 <div class="container mt-3">
     <div class="container shadow-container">
         <?php if($this->session->flashdata('dish_success') != ""):?>
@@ -45,8 +41,7 @@
                                     class="fas fa-cog mr-1"></i>Edit</a>
 
                             <a href="javascript:void(0);" onclick="deleteMenu(<?php echo $dish['d_id']; ?>)"
-                                class="btn btn-danger"><i
-                                    class="fa fa-trash-o mr-1"></i>Delete</a>
+                                class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
 
                         </td>
                     </tr>
@@ -61,9 +56,6 @@
         </div>
     </div>
 </div>
-
-
-<?php $this->load->view('admin/footer'); ?>
 <script type="text/javascript">
 function deleteMenu(id) {
     if (confirm("Are you sure you want to delete dish?")) {
@@ -79,6 +71,3 @@ $(document).ready(function() {
     });
 });
 </script>
-</script>
-
-</html>

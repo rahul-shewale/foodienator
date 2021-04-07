@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<?php $this->load->view('admin/header'); ?>
 <div class="container mt-3">
     <div class="container shadow-container mt-3">
         <?php if($this->session->flashdata('cat_success') != ""):?>
@@ -41,8 +37,7 @@
                                     class="btn btn-info mb-1"><i
                                         class="fas fa-cog mr-1"></i>Edit</a>
                                 <a href="javascript:void(0);" onclick="deleteCat(<?php echo $cat['c_id']; ?>)"
-                                    class="btn btn-danger"><i
-                                        class="fa fa-trash-o mr-1"></i>Delete</a>
+                                    class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
 
                             </td>
                         </tr>
@@ -60,7 +55,7 @@
 </div>
 
 
-<?php $this->load->view('admin/footer'); ?>
+
 <script type="text/javascript">
 function deleteCat(id) {
     if (confirm("Are you sure you want to delete category?")) {
@@ -76,6 +71,3 @@ $(document).ready(function() {
     });
 });
 </script>
-</script>
-
-</html>
